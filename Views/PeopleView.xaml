@@ -114,7 +114,7 @@
                                             BackgroundColor="#000000">
                                         <toolkit:Expander>
                                             <toolkit:Expander.Header>
-                                                <Grid RowSpacing="1" ColumnSpacing="6">
+                                                <Grid RowSpacing="1" ColumnSpacing="6" Padding="10,0,0,0">
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="auto"/>
                                                         <RowDefinition Height="auto"/>
