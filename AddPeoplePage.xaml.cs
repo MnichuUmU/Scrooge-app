@@ -131,7 +131,7 @@ public partial class AddPeoplePage : ContentPage
         }
         if(string.IsNullOrWhiteSpace(ent_phone.Text))
         {
-            bool haveNumber = await DisplayAlert("Are you shure" , "Do you want to leave phone number empty?" , "YES" , "NO");
+            bool haveNumber = await DisplayAlert("Are you sure" , "Do you want to leave phone number empty?" , "YES" , "NO");
             if(!haveNumber) return;
             else if(!string.IsNullOrWhiteSpace(ent_phone.Text) && !Regex.Match(ent_phone.Text , @"^(?:\+48)?[\s-]?\d{3}[\s-]?\d{3}[\s-]?\d{3}$").Success)
             {
@@ -142,7 +142,7 @@ public partial class AddPeoplePage : ContentPage
 
         if(string.IsNullOrWhiteSpace(ent_mail.Text))
         {
-            bool haveMail = await DisplayAlert("Are you shure?" , "Do you want to leave the mail empty?" , "YES" , "NO");
+            bool haveMail = await DisplayAlert("Are you sure?" , "Do you want to leave the mail empty?" , "YES" , "NO");
             if(!haveMail) return;
         }
         try
