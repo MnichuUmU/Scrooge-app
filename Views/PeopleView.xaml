@@ -110,7 +110,7 @@
 
                                     <VerticalStackLayout Spacing="16">
                                     <Border Stroke="{Binding Color, Converter={StaticResource StringToColorConverter}}" Padding="5" Margin="0,5,5,0"
-                                            StrokeThickness="2" StrokeShape="RoundRectangle 30,30,30,30"
+                                            StrokeThickness="2" StrokeShape="RoundRectangle 10,10,10,10"
                                             BackgroundColor="#000000">
                                         <toolkit:Expander>
                                             <toolkit:Expander.Header>
