@@ -134,7 +134,7 @@ public partial class AddLogPage : ContentPage, IQueryAttributable
         }
         if(string.IsNullOrWhiteSpace(edit_description.Text))
         {
-            bool haveDescription = await DisplayAlert("Are you shure?" , "Do you want to leave the description empty?" , "YES" , "NO");
+            bool haveDescription = await DisplayAlert("Are you sure?" , "Do you want to leave the description empty?" , "YES" , "NO");
             if(!haveDescription) return;
         }
 
