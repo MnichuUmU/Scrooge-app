@@ -7,7 +7,7 @@ public partial class AddLogPage : ContentPage, IQueryAttributable
 {
     string _currentPhotoPath = "";
 
-    //tworszy obiekt który przechwici przes³any obiekt people
+    //tworszy obiekt ktÃ³ry przechwici przesÂ³any obiekt people
     private People SelectedPerson { get; set; }
     // podpinanie pod baze danych
     private readonly LocalDbService _dbService;
@@ -16,7 +16,7 @@ public partial class AddLogPage : ContentPage, IQueryAttributable
         InitializeComponent();
         _dbService = dbService;
     }
-    //przypisuje obiektowy SelectedPerson przes³any obiekt people
+    //przypisuje obiektowy SelectedPerson przesÂ³any obiekt people
     public void ApplyQueryAttributes( IDictionary<string , object> query )
     {
         if(query.ContainsKey("PersonData"))
@@ -24,7 +24,7 @@ public partial class AddLogPage : ContentPage, IQueryAttributable
             SelectedPerson = query["PersonData"] as People;
         }
     }
-    //Przy w³¹czeniu aplikacji pokazuje popup ³adowania i zamyka go po za³adowaniu informacji do ui
+    //Przy wÂ³Â¹czeniu aplikacji pokazuje popup Â³adowania i zamyka go po zaÂ³adowaniu informacji do ui
     protected override async void OnNavigatedTo( NavigatedToEventArgs args )
     {
         base.OnNavigatedTo(args);
@@ -65,12 +65,12 @@ public partial class AddLogPage : ContentPage, IQueryAttributable
         string text = ent_amount.Text;
         if(!string.IsNullOrWhiteSpace(text))
         {
-            text.Replace("–" , "-").Replace("—" , "-").Replace(" " , "");
+            text.Replace("â€“" , "-").Replace("â€”" , "-").Replace(" " , "");
             if(decimal.TryParse(text , NumberStyles.Any , CultureInfo.InvariantCulture , out decimal money))
             {
                 if(money > 0)
                 {
-                    lbl_status.Text = "PORZYCZKA / YOU REPAY";
+                    lbl_status.Text = "LOAN / YOU REPAY";
                 }
                 else if(money < 0)
                 {
