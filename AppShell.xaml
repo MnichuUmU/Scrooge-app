@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Scrooge_app.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Scrooge_app"
+    BackgroundColor="Black">
+
+    <TabBar>
+        <Tab Title="People" Icon="../Resources/Images/user.png">
+            <ShellContent Route="MainPage" ContentTemplate="{DataTemplate local:MainPage}" />
+        </Tab>
+
+        <Tab Title="Add new log" Icon="../Resources/Images/add_log.png">
+            <ShellContent ContentTemplate="{DataTemplate local:AddLogPage}" />
+        </Tab>
+
+        <Tab Title="Add new people" Icon="../Resources/Images/add_user.png">
+            <ShellContent ContentTemplate="{DataTemplate local:AddPeoplePage}" />
+        </Tab>
+    </TabBar>
+</Shell>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Scrooge_app.Views.PeopleView"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:converters="clr-namespace:Scrooge_app.Converters"
+             Title="">
+    <ContentPage.Resources>
+        <converters:StringToColorConverter x:Key="StringToColorConverter"/>
+    </ContentPage.Resources>
+
+    <ScrollView  BackgroundColor="#000000">
+        <VerticalStackLayout>
+            <Border Stroke="#CF0F47" StrokeShape="RoundRectangle 30,30,30,30" Margin="100, 10" Padding="5">
+                <VerticalStackLayout HorizontalOptions="Center">
+                    <Border Grid.Row="0" Grid.ColumnSpan="2" StrokeShape="Ellipse" WidthRequest="100" HeightRequest="100" Margin="5"
+                            Stroke="#FF0B55" StrokeThickness="1" Background="#FFDEDE">
+                        <Image x:Name="img_pfp" Aspect="AspectFit"/>
+                    </Border>
+
+                    <Label x:Name="lbl_name" HorizontalOptions ="Center" TextColor="#FF0B55"/>
+                    <Label x:Name="lbl_surname" HorizontalOptions="Center" TextColor="#FF0B55"/>
+                </VerticalStackLayout>
+            </Border>
+
+            <Button x:Name="btn_addlog" Text="Add log" Clicked="btn_addlog_Clicked" HorizontalOptions="Center"
+                    Padding="120,0,120,0" FontSize="20" Margin="0, 20" BackgroundColor="#CF0F47" TextColor="White"/>
+
+            <toolkit:Expander Margin="10">
+                <toolkit:Expander.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Info" FontAttributes="Bold" FontSize="Medium" TextColor="#CF0F47" Grid.Column="0"/>
+                        <Rectangle Background="#CF0F47" Grid.Column="1" HeightRequest="1"/>
+                    </Grid>
+                </toolkit:Expander.Header>
+                <Grid Padding="10" HeightRequest="130">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                
+                    <HorizontalStackLayout Grid.Row="0">
+                        <Label Text="Number:" TextColor="#825c67" Padding="0,0,15,0"/>
+                        <Label x:Name="lbl_info_number"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Grid.Row="1">
+                        <Label Text="Mail:" TextColor="#825c67" Padding="0,0,15,0"/>
+                        <Label x:Name="lbl_info_mail"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Grid.Row="2">
+                        <Label Text="Facebook:" TextColor="#825c67" Padding="0,0,15,0"/>
+                        <Label x:Name="lbl_info_fb"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Grid.Row="3">
+                        <Label Text="Instagram:" TextColor="#825c67" Padding="0,0,15,0"/>
+                        <Label x:Name="lbl_info_insta"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Grid.Row="4">
+                        <Label Text="Family contact:" TextColor="#825c67" Padding="0,0,15,0"/>
+                        <Label x:Name="lbl_info_family"/>
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout Grid.Row="5">
+                        <Label Text="Log couter:" TextColor="#825c67" Padding="0,0,15,0"/>
+                        <Label x:Name="lbl_info_couter" />
+                    </HorizontalStackLayout>
+
+                </Grid>
+            </toolkit:Expander>
+
+            <Grid Margin="10,0,10,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                
+
+                <Label Text="Logs" FontAttributes="Bold" FontSize="Medium" TextColor="#CF0F47"
+                       Grid.Column="0" Grid.Row="1" />
+                <Rectangle Background="#CF0F47" HeightRequest="1"
+                           Grid.Row="1" Grid.Column="1"/>
+            
+            </Grid>
+
+            <ListView x:Name="lv_logs" HasUnevenRows="True" SelectionMode="None" Margin="10" HorizontalScrollBarVisibility="Never" SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                                <SwipeView>
+                                    <SwipeView.RightItems>
+                                        <SwipeItem Text="Delete" IconImageSource="../Resources/Images/bin.png"  Invoked="OnDeleteInvoked" />
+                                    </SwipeView.RightItems>
+
+                                    <VerticalStackLayout Spacing="16">
+                                    <Border Stroke="{Binding Color, Converter={StaticResource StringToColorConverter}}" Padding="5" Margin="0,5,5,0"
+                                            StrokeThickness="2" StrokeShape="RoundRectangle 30,30,30,30"
+                                            BackgroundColor="#000000">
+                                        <toolkit:Expander>
+                                            <toolkit:Expander.Header>
+                                                <Grid RowSpacing="1" ColumnSpacing="6">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                        <RowDefinition Height="auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding LogName}" FontSize="22"/>
+                                                    <Label Grid.Row="1" Grid.Column="0" Text="{Binding Amount}" FontSize="20"/>
+                                                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding Due}" FontSize="20"/>
+                                                    
+                                                </Grid>
+                                            </toolkit:Expander.Header>
+                                            <VerticalStackLayout>
+                                                <Label Text="{Binding Date}"/>
+                                                <Label Text="{Binding Description}" LineBreakMode="WordWrap"/>
+                                                <VerticalStackLayout Grid.Row="2" Grid.ColumnSpan="2" IsVisible="{Binding HaveProof}">
+                                                    <Label Text="Proof:"  FontSize="18"/>
+                                                    <Image Source="{Binding Proof}" HeightRequest="100" WidthRequest="100"/>
+                                                </VerticalStackLayout>
+                                            </VerticalStackLayout>
+                                        </toolkit:Expander>
+                                    </Border>
+                                </VerticalStackLayout>
+                                </SwipeView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

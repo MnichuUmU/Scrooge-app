@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Scrooge_app.AddPeoplePage"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             Title="">
+    <ContentPage.Resources>
+        <Style x:Key="InvalidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Red" />
+        </Style>
+        <Style x:Key="ValidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Green" />
+        </Style>
+    </ContentPage.Resources>
+    <ScrollView BackgroundColor="Black">
+        <Grid  HeightRequest="800" VerticalOptions="Start">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            
+            <Label Text="Add a new person" Grid.ColumnSpan="2" Grid.Row="0" FontSize="30" Padding="20" BackgroundColor="#CF0F47"/>
+            
+            <Border Margin="20" Grid.Row="1" StrokeShape="RoundRectangle 20 20 20 20"
+                     Stroke="#CF0F47" StrokeThickness="2">
+                <Grid Margin="20, 15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+
+                
+                <Border Grid.Row="0" Grid.ColumnSpan="2" StrokeShape="Ellipse" WidthRequest="100" HeightRequest="100"
+                Stroke="#FF0B55" StrokeThickness="1" BackgroundColor="#FFDEDE">
+                    <ImageButton x:Name="ent_profile"  Source="../Resources/Images/user.png" 
+                         Clicked="ent_profile_Clicked"/>
+                </Border>
+                
+                <Entry x:Name="ent_name" Grid.Row="1" Grid.Column="0" Placeholder="Name..." HeightRequest="20" ReturnType="Next" Margin="0, 0, 15, 0"/>
+                
+                <Border Grid.Row="1" Grid.Column="1" StrokeShape="Ellipse" WidthRequest="40" HeightRequest="40" 
+                Stroke="#FF0B55" StrokeThickness="1" BackgroundColor="#FFDEDE">
+                    <ImageButton x:Name="btn_imp_contact"  Source="../Resources/Images/phone.png" Aspect="AspectFit"
+                         Clicked="btn_imp_contact_Clicked" Margin="5"/>
+                </Border>
+                
+                <Entry x:Name="ent_surname" Grid.Row="2" Grid.ColumnSpan="2"  Placeholder="Surame..." HeightRequest="20" ReturnType="Next"/>
+                
+                <StackLayout Grid.Row="3" Grid.ColumnSpan="2">
+                    <Entry x:Name="ent_phone" Placeholder="Phone number..." HeightRequest="20"
+                   Keyboard="Telephone" ReturnType="Next">
+                        <Entry.Behaviors>
+                            <toolkit:NumericValidationBehavior 
+                     InvalidStyle="{StaticResource InvalidEntryStyle}"
+                     ValidStyle="{StaticResource ValidEntryStyle}"
+                     Flags="ValidateOnValueChanged"
+                     MaximumDecimalPlaces="0" />
+                            <toolkit:TextValidationBehavior
+                     InvalidStyle="{StaticResource InvalidEntryStyle}"
+                     ValidStyle="{StaticResource ValidEntryStyle}"
+                     Flags="ValidateOnValueChanged"
+                     RegexPattern="^(?:\+48)?[\s-]?\d{3}[\s-]?\d{3}[\s-]?\d{3}$"/>
+                        </Entry.Behaviors>
+                    </Entry>
+                </StackLayout>
+            </Grid>
+            </Border>
+
+            <Border Margin="20" Grid.Row="2" StrokeShape="RoundRectangle 20 20 20 20"
+                     Stroke="#CF0F47" StrokeThickness="2">
+            <Grid Margin="20, 15">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Entry x:Name="ent_mail" Grid.Row="0" Grid.ColumnSpan="2" Placeholder="Mail..." HeightRequest="20"/>
+                    <Entry x:Name="ent_fb" Grid.Row="1" Grid.Column="0" Placeholder="Facebook link..." HeightRequest="20" Margin="0, 0, 15, 0"/>
+                    <ImageButton x:Name="btn_imp_fb" Source="../Resiyrces/Images/facebook.png" Aspect="AspectFit" WidthRequest="30" HeightRequest="30"
+                                Grid.Row="1" Grid.Column="1" Clicked="btn_imp_fb_Clicked"/>
+                <Entry x:Name="ent_insta" Grid.Row="2" Grid.Column="0" Placeholder="Instagram link..." HeightRequest="20" Margin="0, 0, 15, 0"/>
+                    <ImageButton x:Name="btn_imp_insta" Source="../Resiyrces/Images/instagram.png" Aspect="AspectFit" WidthRequest="30" HeightRequest="30"
+                                Grid.Row="2" Grid.Column="1" Clicked="btn_imp_insta_Clicked"/>
+                <Entry x:Name="ent_family" Grid.Row="3" Grid.ColumnSpan="2" Placeholder="Family contact..." HeightRequest="20"/>
+            </Grid>
+            </Border>
+            
+            <Button x:Name="btn_add_person" Clicked="btn_add_person_Clicked"
+                    Grid.Row="3" Text="Save" FontSize="30" HeightRequest="60" CornerRadius="0" BackgroundColor="#CF0F47" TextColor="White"/>
+        </Grid>
+        
+    </ScrollView>
+    
+    
+
+</ContentPage>

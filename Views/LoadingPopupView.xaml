@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Scrooge_app.Views.LoadingPopupView"
+             CanBeDismissedByTappingOutsideOfPopup="False"
+             Color="Transparent">
+    <VerticalStackLayout Padding="10" Background="Transparent">
+        <Image Source="../Resources/Images/loading.gif" IsAnimationPlaying="True"  HeightRequest="100" WidthRequest="100"/>
+    </VerticalStackLayout>
+
+</mct:Popup>
+

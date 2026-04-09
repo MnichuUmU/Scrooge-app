@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Scrooge_app.MainPage"
+             Title=""
+             >
+    <Grid BackgroundColor="#000000">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Text="List of debtors" FontSize="30" Padding="20" BackgroundColor="#CF0F47"/>
+        <ListView x:Name="lv_people" Grid.Row="1" HasUnevenRows="True" SelectionMode="None" ItemTapped="lv_people_ItemTapped" Margin="10" 
+                  SeparatorVisibility="None">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItem Text="Delete" IconImageSource="../Resources/Images/bin.png"  Invoked="OnDeleteInvoked" />
+                            </SwipeView.RightItems>
+                            <VerticalStackLayout Spacing="16">
+                                <Border Stroke="#FF0B55" StrokeThickness="2" StrokeShape="RoundRectangle 50,50,50,50" BackgroundColor="#000000" Padding="8" Margin="0,5,5,0">
+                                    <Grid RowSpacing="1" ColumnSpacing="6">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="*"/>
+
+                                        </Grid.ColumnDefinitions>
+                                        <Border Grid.Column="0" Grid.RowSpan="3" StrokeShape="Ellipse" WidthRequest="60" HeightRequest="60"
+                                                Stroke="#FF0B55" StrokeThickness="2" Margin="10, 5" Background="#FFDEDE" >
+                                            <Image x:Name="img_person" Source="{Binding ProfilePick}" IsVisible="True"  Aspect="AspectFit"/>
+                                        </Border>
+                                        <Label Grid.Row="0" Grid.Column="1" FontSize="25" Text="{Binding FullName}"/>
+                                        
+                                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding Balance}" FontSize="20"/>
+                                    </Grid>
+                                </Border>
+                            </VerticalStackLayout>
+                        </SwipeView>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Border x:Name="img_empty" StrokeShape="RoundRectangle 30, 30, 30, 30" WidthRequest="200" HeightRequest="200"
+                Stroke="#FF0B55" StrokeThickness="5" Margin="10, 5" Background="#FFDEDE" 
+                Grid.RowSpan="2" IsVisible="True">
+            <Image Source="../Resources/Images/empty_list.png" Aspect="AspectFit"  HorizontalOptions="Center" Margin="20"/>
+        </Border>
+    </Grid>
+    
+
+</ContentPage>
